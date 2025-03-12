@@ -14,6 +14,20 @@ namespace NewScript
             if (transform.position.y < _fallThreshold)
             {
                 OnEnemyDestroyed?.Invoke(gameObject);
+                //Destroy(gameObject);
+                ReturnEnemyToPool();
+            }
+        }
+
+        private void ReturnEnemyToPool()
+        {
+            EnemyPool enemyPool = FindObjectOfType<EnemyPool>();
+            if (enemyPool != null)
+            {
+                enemyPool.ReturnEnemy(GetComponent<Enemy>());
+            }
+            else
+            {
                 Destroy(gameObject);
             }
         }
