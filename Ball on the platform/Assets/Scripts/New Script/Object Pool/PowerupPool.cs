@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NewScript
 {
-    public class PoweupPool : MonoBehaviour
+    public class PowerupPool : MonoBehaviour
     {
         [SerializeField] private Powerup _prefabPowerup;
         [SerializeField] private int _poolSize = 5;

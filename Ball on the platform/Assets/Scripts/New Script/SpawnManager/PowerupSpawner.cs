@@ -3,13 +3,15 @@
 namespace NewScript
 {
     public class PowerupSpawner : MonoBehaviour
-    {
-        [SerializeField] private GameObject _powerupPrefab;
+    {        
+        [SerializeField] private PowerupPool _powerupPool;
         private Spawn _spawn = new Spawn();
 
         public void SpawnPowerup()
         {
-            Instantiate(_powerupPrefab, _spawn.GenerateSpawnPosition(), _powerupPrefab.transform.rotation);
+            
+            Powerup powerup = _powerupPool.GetPowerup();
+            powerup.transform.position = _spawn.GenerateSpawnPosition();            
         }
     }
 }

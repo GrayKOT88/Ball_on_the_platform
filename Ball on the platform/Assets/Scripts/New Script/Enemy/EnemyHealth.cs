@@ -6,25 +6,29 @@ namespace NewScript
     public class EnemyHealth : MonoBehaviour
     {
         private float _fallThreshold = -5f;
+        private EnemyPool _enemyPool;
 
         public event Action<GameObject> OnEnemyDestroyed;
+
+        private void Start()
+        {
+            _enemyPool = FindObjectOfType<EnemyPool>();
+        }
 
         private void Update()
         {
             if (transform.position.y < _fallThreshold)
             {
-                OnEnemyDestroyed?.Invoke(gameObject);
-                //Destroy(gameObject);
+                OnEnemyDestroyed?.Invoke(gameObject);                
                 ReturnEnemyToPool();
             }
         }
 
         private void ReturnEnemyToPool()
-        {
-            EnemyPool enemyPool = FindObjectOfType<EnemyPool>();
-            if (enemyPool != null)
+        {            
+            if (_enemyPool != null)
             {
-                enemyPool.ReturnEnemy(GetComponent<Enemy>());
+                _enemyPool.ReturnEnemy(GetComponent<Enemy>());
             }
             else
             {
