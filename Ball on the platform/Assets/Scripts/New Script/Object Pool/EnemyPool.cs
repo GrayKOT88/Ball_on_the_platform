@@ -39,13 +39,8 @@ namespace NewScript
 
         public void ReturnEnemy(Enemy enemy)
         {
-            enemy.gameObject.SetActive(false);
-            // Сбросим состояние врага, если необходимо
-            EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
-            if (enemyMovement != null)
-            {
-                enemyMovement.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-            }
+            enemy.gameObject.SetActive(false);            
+            enemy.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             _enemyPool.Enqueue(enemy);
         }
 
