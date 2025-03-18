@@ -19,10 +19,16 @@ namespace NewScript
         {
             for (int i = 0; i < _poolSize; i++)
             {
-                Powerup powerup = Instantiate(_prefabPowerup, transform);
-                powerup.gameObject.SetActive(false);
-                _powerupPool.Enqueue(powerup);
+                ExpandPool();
             }
+        }
+
+        private void ExpandPool()
+        {
+            Powerup powerup = Instantiate(_prefabPowerup, transform);
+            powerup.gameObject.SetActive(false);
+            _powerupPool.Enqueue(powerup);
+            powerup.Initialize(this);
         }
 
         public Powerup GetPowerup()
@@ -39,13 +45,6 @@ namespace NewScript
 
         public void ReturnPowerup(Powerup powerup)
         {
-            powerup.gameObject.SetActive(false);
-            _powerupPool.Enqueue(powerup);
-        }
-
-        private void ExpandPool()
-        {
-            Powerup powerup = Instantiate(_prefabPowerup, transform);
             powerup.gameObject.SetActive(false);
             _powerupPool.Enqueue(powerup);
         }

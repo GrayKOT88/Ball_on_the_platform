@@ -2,10 +2,15 @@
 
 namespace NewScript
 {
-    public class EnemySpawner : MonoBehaviour
+    public class EnemySpawner
     {
-        [SerializeField] private EnemyPool _enemyPool;        
+        private EnemyPool _enemyPool;        
         private Spawn _spawn = new Spawn();
+
+        public EnemySpawner(EnemyPool enemyPool)
+        {
+            _enemyPool = enemyPool;
+        }
 
         public void SpawnEnemyWave(int numberOfEnemies)
         {

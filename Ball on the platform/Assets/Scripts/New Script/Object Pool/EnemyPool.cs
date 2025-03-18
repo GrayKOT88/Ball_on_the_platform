@@ -19,10 +19,16 @@ namespace NewScript
         {
             for (int i = 0; i < _poolSize; i++)
             {
-                Enemy enemy = Instantiate(_prefabEnemy, transform);
-                enemy.gameObject.SetActive(false);
-                _enemyPool.Enqueue(enemy);
+                ExpandPool();
             }
+        }
+
+        private void ExpandPool()
+        {
+            Enemy enemy = Instantiate(_prefabEnemy, transform);
+            enemy.gameObject.SetActive(false);
+            _enemyPool.Enqueue(enemy);
+            enemy.Initialize(this);
         }
 
         public Enemy GetEnemy()
@@ -41,13 +47,6 @@ namespace NewScript
         {
             enemy.gameObject.SetActive(false);            
             enemy.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-            _enemyPool.Enqueue(enemy);
-        }
-
-        private void ExpandPool()
-        {
-            Enemy enemy = Instantiate(_prefabEnemy, transform);
-            enemy.gameObject.SetActive(false);
             _enemyPool.Enqueue(enemy);
         }
     }

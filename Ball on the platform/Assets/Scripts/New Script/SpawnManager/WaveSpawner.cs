@@ -2,25 +2,26 @@
 
 namespace NewScript
 {
-    public class WaveManager : MonoBehaviour
+    public class WaveSpawner : MonoBehaviour
     {
-        [SerializeField] private DownPlatform _downPlatform;
-        private EnemySpawner _enemySpawner;
+        [SerializeField] private PowerupPool _powerupPool;
+        [SerializeField] private EnemyPool _enemyPool;
+        private EnemySpawner _enemySpawner ;
         private PowerupSpawner _powerupSpawner;
         private int _waveNumber = 1;
         private int _enemyCount;
 
         private void Start()
-        {
-            _enemySpawner = GetComponent<EnemySpawner>();
-            _powerupSpawner = GetComponent<PowerupSpawner>();
-            _downPlatform.OnEnemyDestroyed += UpdateWave;
+        {           
+            _enemySpawner = new EnemySpawner(_enemyPool);
+            _powerupSpawner = new PowerupSpawner(_powerupPool);
+            Enemy.OnEnemyDestroyed += UpdateWave;
             StartNextWave();            
         }
 
         private void UpdateWave()
         {
-            _enemyCount = FindObjectsOfType<Enemy>().Length;
+            _enemyCount--;            
             if (_enemyCount == 0)
             {
                 _waveNumber++;
@@ -32,6 +33,7 @@ namespace NewScript
         {            
             _enemySpawner.SpawnEnemyWave(_waveNumber);
             _powerupSpawner.SpawnPowerup();            
+            _enemyCount = _waveNumber;
         }        
     }
 }

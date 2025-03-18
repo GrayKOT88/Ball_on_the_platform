@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 23409072546096730}
   - component: {fileID: -2426180277992866958}
   - component: {fileID: 2867751405999591569}
-  - component: {fileID: -8941806108912518873}
-  - component: {fileID: 4148475668094430928}
   - component: {fileID: -1905656752619187704}
   m_Layer: 0
   m_Name: Enemy Ball
@@ -136,31 +134,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-8941806108912518873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138913196090074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 097e01608b8a4f64ead39229b6b4f839, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 1
---- !u!114 &4148475668094430928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138913196090074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a15b1d5c6d87c284e91dac4f72031716, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-1905656752619187704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,3 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1916b7b37f2e84d9499e002309d135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 1

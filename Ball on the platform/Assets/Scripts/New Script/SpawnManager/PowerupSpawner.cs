@@ -2,14 +2,18 @@
 
 namespace NewScript
 {
-    public class PowerupSpawner : MonoBehaviour
+    public class PowerupSpawner
     {        
-        [SerializeField] private PowerupPool _powerupPool;
+        private PowerupPool _powerupPool;
         private Spawn _spawn = new Spawn();
 
-        public void SpawnPowerup()
+        public PowerupSpawner(PowerupPool poweupPool)
         {
-            
+            _powerupPool = poweupPool;
+        }
+
+        public void SpawnPowerup()
+        {            
             Powerup powerup = _powerupPool.GetPowerup();
             powerup.transform.position = _spawn.GenerateSpawnPosition();            
         }

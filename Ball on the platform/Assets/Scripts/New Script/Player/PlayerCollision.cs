@@ -4,12 +4,12 @@ namespace NewScript
 {
     public class PlayerCollision : MonoBehaviour
     {
-        private PowerupController _powerupController;
+        private PowerupIndicatorController _powerupController;
         private float _powerupStrength = 15f;
 
         private void Start()
         {
-            _powerupController = GetComponent<PowerupController>();
+            _powerupController = GetComponent<PowerupIndicatorController>();
         }
 
         private void OnCollisionEnter(Collision collision)
