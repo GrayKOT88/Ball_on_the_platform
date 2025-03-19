@@ -4,7 +4,14 @@ namespace NewScript
 {
     public class Spawn
     {
-        private float _spawnRange = 9f;
+        private float _spawnRange;
+        private GameSettings _gameSettings;
+
+        public Spawn(GameSettings gameSettings)
+        {
+            _gameSettings = gameSettings;
+            _spawnRange = _gameSettings.SpawnRange;
+        }
 
         public Vector3 GenerateSpawnPosition()
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NewScript
 {
-    public class PowerupPool : MonoBehaviour
+    public class PowerupPool : MonoBehaviour, IObjectPool<Powerup>
     {
         [SerializeField] private Powerup _prefabPowerup;
         [SerializeField] private int _poolSize = 5;
@@ -31,7 +31,7 @@ namespace NewScript
             powerup.Initialize(this);
         }
 
-        public Powerup GetPowerup()
+        public Powerup GetObject()
         {
             if (_powerupPool.Count == 0)
             {
@@ -43,7 +43,7 @@ namespace NewScript
             return powerup;
         }
 
-        public void ReturnPowerup(Powerup powerup)
+        public void ReturnObject(Powerup powerup)
         {
             powerup.gameObject.SetActive(false);
             _powerupPool.Enqueue(powerup);

@@ -4,9 +4,9 @@ using System;
 namespace NewScript
 {
     public class Enemy : MonoBehaviour
-    {
-        [SerializeField] private float _speed = 1f;
-        private EnemyPool _enemyPool;
+    {        
+        [SerializeField] private GameSettings _gameSettings;
+        private IObjectPool<Enemy> _enemyPool;
         private Rigidbody _enemyRb;
         private Transform _playerTransform;
 
@@ -18,7 +18,7 @@ namespace NewScript
             _playerTransform = GameObject.Find("Player").transform;
         }
 
-        public void Initialize(EnemyPool enemyPool)
+        public void Initialize(IObjectPool<Enemy> enemyPool)
         {
             _enemyPool = enemyPool;
         }
@@ -28,10 +28,10 @@ namespace NewScript
             if (_playerTransform != null)
             {
                 Vector3 lookDirection = (_playerTransform.position - transform.position).normalized;
-                _enemyRb.AddForce(lookDirection * _speed);
-                if (transform.position.y < -10)
+                _enemyRb.AddForce(lookDirection * _gameSettings.EnemySpeed);
+                if (transform.position.y < _gameSettings.LowerBoundDestroy)
                 {
-                    _enemyPool.ReturnEnemy(this);
+                    _enemyPool.ReturnObject(this);
                     OnEnemyDestroyed?.Invoke();                    
                 }
             }

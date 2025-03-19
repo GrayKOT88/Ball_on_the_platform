@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NewScript
 {
-    public class EnemyPool : MonoBehaviour
+    public class EnemyPool : MonoBehaviour, IObjectPool<Enemy>
     {
         [SerializeField] private Enemy _prefabEnemy;
         [SerializeField] private int _poolSize = 5;
@@ -31,7 +31,7 @@ namespace NewScript
             enemy.Initialize(this);
         }
 
-        public Enemy GetEnemy()
+        public Enemy GetObject()
         {
             if (_enemyPool.Count == 0)
             {
@@ -43,10 +43,10 @@ namespace NewScript
             return enemy;
         }
 
-        public void ReturnEnemy(Enemy enemy)
+        public void ReturnObject(Enemy enemy)
         {
-            enemy.gameObject.SetActive(false);            
-            enemy.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            enemy.gameObject.SetActive(false);
+            enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
             _enemyPool.Enqueue(enemy);
         }
     }

@@ -4,8 +4,10 @@ namespace NewScript
 {
     public class WaveSpawner : MonoBehaviour
     {
-        [SerializeField] private PowerupPool _powerupPool;
         [SerializeField] private EnemyPool _enemyPool;
+        [SerializeField] private PowerupPool _powerupPool;
+        [SerializeField] private GameSettings _gameSettings;
+
         private EnemySpawner _enemySpawner ;
         private PowerupSpawner _powerupSpawner;
         private int _waveNumber = 1;
@@ -13,8 +15,8 @@ namespace NewScript
 
         private void Start()
         {           
-            _enemySpawner = new EnemySpawner(_enemyPool);
-            _powerupSpawner = new PowerupSpawner(_powerupPool);
+            _enemySpawner = new EnemySpawner(_enemyPool, _gameSettings);
+            _powerupSpawner = new PowerupSpawner(_powerupPool, _gameSettings);
             Enemy.OnEnemyDestroyed += UpdateWave;
             StartNextWave();            
         }

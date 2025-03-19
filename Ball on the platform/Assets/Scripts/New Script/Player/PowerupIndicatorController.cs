@@ -6,8 +6,8 @@ namespace NewScript
     public class PowerupIndicatorController : MonoBehaviour
     {        
         [SerializeField] private GameObject _powerupIndicator;
-        private bool _hasPowerup = false;
-        private float _powerupDuration = 7f;
+        [SerializeField] private GameSettings _gameSettings;
+        private bool _hasPowerup = false;        
 
         private void Start()
         {
@@ -28,7 +28,7 @@ namespace NewScript
         
         private IEnumerator PowerupCountdownRoutine()
         {
-            yield return new WaitForSeconds(_powerupDuration);
+            yield return new WaitForSeconds(_gameSettings.PowerupDuration);
             _hasPowerup = false;
             _powerupIndicator.SetActive(false);
         }

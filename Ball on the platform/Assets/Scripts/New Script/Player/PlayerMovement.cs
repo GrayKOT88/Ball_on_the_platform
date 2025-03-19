@@ -4,7 +4,7 @@ namespace NewScript
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private float _speed = 2f;
+        [SerializeField] private float _playerSpeed = 2f;
         private Rigidbody _playerRb;
         private Transform _focalPoint;
 
@@ -17,7 +17,7 @@ namespace NewScript
         private void Update()
         {
             float forwardInput = Input.GetAxis("Vertical");
-            _playerRb.AddForce(_focalPoint.transform.forward * _speed * forwardInput);
+            _playerRb.AddForce(_focalPoint.transform.forward * _playerSpeed * forwardInput);
         }
     }
 }

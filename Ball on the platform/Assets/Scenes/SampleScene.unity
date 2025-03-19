@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d6a4a69149b0345acd63ce5003c0e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSpeed: 50
+  _gameSettings: {fileID: 11400000, guid: 37f6442b2652d324d8925356d13b92c7, type: 2}
 --- !u!4 &1524169228
 Transform:
   m_ObjectHideFlags: 0
@@ -685,8 +685,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557775d58c3315c49a3cb97fc167c252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _powerupPool: {fileID: 1667600970}
   _enemyPool: {fileID: 1667600971}
+  _powerupPool: {fileID: 1667600970}
+  _gameSettings: {fileID: 11400000, guid: 37f6442b2652d324d8925356d13b92c7, type: 2}
 --- !u!1 &1833536176911849
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,6 +896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c822e3470858e4eb7a5d67b7f3f1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameSettings: {fileID: 11400000, guid: 37f6442b2652d324d8925356d13b92c7, type: 2}
 --- !u!114 &7075702237666463884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,7 +909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0ce3a81eb251b44b2dfbed013f4ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  _playerSpeed: 2
 --- !u!114 &7075702237666463885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,6 +923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _powerupIndicator: {fileID: 6297376995716744104}
+  _gameSettings: {fileID: 11400000, guid: 37f6442b2652d324d8925356d13b92c7, type: 2}
 --- !u!33 &7610044923976860071
 MeshFilter:
   m_ObjectHideFlags: 0

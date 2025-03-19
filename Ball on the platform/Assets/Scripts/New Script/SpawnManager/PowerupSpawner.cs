@@ -4,17 +4,18 @@ namespace NewScript
 {
     public class PowerupSpawner
     {        
-        private PowerupPool _powerupPool;
-        private Spawn _spawn = new Spawn();
+        private IObjectPool<Powerup> _powerupPool; // интерфейс
+        private Spawn _spawn;
 
-        public PowerupSpawner(PowerupPool poweupPool)
+        public PowerupSpawner(IObjectPool<Powerup> poweupPool, GameSettings gameSettings)
         {
             _powerupPool = poweupPool;
+            _spawn = new Spawn(gameSettings);
         }
 
         public void SpawnPowerup()
         {            
-            Powerup powerup = _powerupPool.GetPowerup();
+            Powerup powerup = _powerupPool.GetObject(); // метод из интерфейса
             powerup.transform.position = _spawn.GenerateSpawnPosition();            
         }
     }

@@ -4,19 +4,20 @@ namespace NewScript
 {
     public class EnemySpawner
     {
-        private EnemyPool _enemyPool;        
-        private Spawn _spawn = new Spawn();
+        private IObjectPool<Enemy> _enemyPool; // интерфейс вместо конкретной реализации        
+        private Spawn _spawn;
 
-        public EnemySpawner(EnemyPool enemyPool)
+        public EnemySpawner(IObjectPool<Enemy> enemyPool, GameSettings gameSettings)
         {
             _enemyPool = enemyPool;
+            _spawn = new Spawn(gameSettings);
         }
 
         public void SpawnEnemyWave(int numberOfEnemies)
         {
             for (int i = 0; i < numberOfEnemies; i++)
             {                
-                Enemy enemy = _enemyPool.GetEnemy();
+                Enemy enemy = _enemyPool.GetObject(); // метод из интерфейса
                 enemy.transform.position = _spawn.GenerateSpawnPosition();                
             }
         }

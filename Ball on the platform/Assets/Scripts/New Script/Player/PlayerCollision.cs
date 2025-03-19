@@ -4,8 +4,8 @@ namespace NewScript
 {
     public class PlayerCollision : MonoBehaviour
     {
-        private PowerupIndicatorController _powerupController;
-        private float _powerupStrength = 15f;
+        [SerializeField] private GameSettings _gameSettings;
+        private PowerupIndicatorController _powerupController;        
 
         private void Start()
         {
@@ -24,7 +24,7 @@ namespace NewScript
         {
             Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
             Vector3 awayFromPlayer = enemy.transform.position - transform.position;
-            enemyRb.AddForce(awayFromPlayer * _powerupStrength, ForceMode.Impulse);
+            enemyRb.AddForce(awayFromPlayer * _gameSettings.PowerupStrength, ForceMode.Impulse);
         }
     }
 }

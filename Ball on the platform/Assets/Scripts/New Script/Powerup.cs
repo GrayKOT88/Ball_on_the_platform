@@ -5,11 +5,11 @@ namespace NewScript
 {
     public class Powerup : MonoBehaviour
     {
-        private PowerupPool _powerupPool;
+        private IObjectPool<Powerup> _powerupPool;
 
         public static event Action OnPowerup;
 
-        public void Initialize(PowerupPool powerupPool)
+        public void Initialize(IObjectPool<Powerup> powerupPool)
         {
             _powerupPool = powerupPool;
         }
@@ -19,7 +19,7 @@ namespace NewScript
             if (other.CompareTag("Player"))
             {
                 OnPowerup?.Invoke();
-                _powerupPool.ReturnPowerup(this);                                
+                _powerupPool.ReturnObject(this);                
             }
         }
     }
