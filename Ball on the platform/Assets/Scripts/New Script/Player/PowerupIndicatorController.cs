@@ -1,13 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace NewScript
 {
     public class PowerupIndicatorController : MonoBehaviour
-    {        
-        [SerializeField] private GameObject _powerupIndicator;
-        [SerializeField] private GameSettings _gameSettings;
-        private bool _hasPowerup = false;        
+    {
+        [Inject] private GameObject _powerupIndicator;
+        [Inject] private GameSettings _settings;
+        private bool _hasPowerup = false;
+        private Vector3 _indicatorPosition = new Vector3(0, -0.7f, 0);
 
         private void Start()
         {
@@ -16,7 +18,7 @@ namespace NewScript
 
         private void Update()
         {            
-            _powerupIndicator.transform.position = transform.position + new Vector3(0, -0.7f, 0);
+            _powerupIndicator.transform.position = transform.position + _indicatorPosition;
         }
 
         private void OnPowerupIndicator()
@@ -28,7 +30,7 @@ namespace NewScript
         
         private IEnumerator PowerupCountdownRoutine()
         {
-            yield return new WaitForSeconds(_gameSettings.PowerupDuration);
+            yield return new WaitForSeconds(_settings.PowerupDuration);
             _hasPowerup = false;
             _powerupIndicator.SetActive(false);
         }

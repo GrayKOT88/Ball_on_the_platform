@@ -1,10 +1,11 @@
 using UnityEngine;
+using Zenject;
 
 namespace NewScript
 {
     public class PlayerCollision : MonoBehaviour
     {
-        [SerializeField] private GameSettings _gameSettings;
+        [Inject] private GameSettings _settings;
         private PowerupIndicatorController _powerupController;        
 
         private void Start()
@@ -16,15 +17,11 @@ namespace NewScript
         {
             if (collision.gameObject.CompareTag("Enemy") && _powerupController.HasPowerup())
             {
-                ApplyForceToEnemy(collision.gameObject);
+                Rigidbody enemyRb = collision.gameObject.GetComponent<Rigidbody>();
+                Vector3 awayFromPlayer = collision.transform.position - transform.position;
+                ICommand command = new ApplyForceCommand(enemyRb, awayFromPlayer * _settings.PowerupStrength);
+                command.Execute();                
             }
-        }
-
-        private void ApplyForceToEnemy(GameObject enemy)
-        {
-            Rigidbody enemyRb = enemy.GetComponent<Rigidbody>();
-            Vector3 awayFromPlayer = enemy.transform.position - transform.position;
-            enemyRb.AddForce(awayFromPlayer * _gameSettings.PowerupStrength, ForceMode.Impulse);
         }
     }
 }

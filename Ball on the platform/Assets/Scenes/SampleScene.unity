@@ -122,6 +122,88 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &300535482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 300535485}
+  - component: {fileID: 300535484}
+  - component: {fileID: 300535483}
+  m_Layer: 0
+  m_Name: GameInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &300535483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300535482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 300535484}
+  _installerPrefabs: []
+  _autoRun: 1
+  OnPreInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  _parentNewObjectsUnderSceneContext: 0
+  _contractNames: []
+  _parentContractNames: []
+--- !u!114 &300535484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300535482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb4e84b7dd0166488f3bac76393d085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameSettings: {fileID: 11400000, guid: 37f6442b2652d324d8925356d13b92c7, type: 2}
+  _enemyPool: {fileID: 1667600971}
+  _powerupPool: {fileID: 1667600970}
+  _focalPoint: {fileID: 1524169228}
+  _powerupIndicator: {fileID: 6297376995716744104}
+--- !u!4 &300535485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300535482}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +569,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 18c686a803148734380a584c16e1acc5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -561,7 +643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d6a4a69149b0345acd63ce5003c0e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameSettings: {fileID: 11400000, guid: 37f6442b2652d324d8925356d13b92c7, type: 2}
 --- !u!4 &1524169228
 Transform:
   m_ObjectHideFlags: 0
@@ -610,7 +691,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefabPowerup: {fileID: 7688778399495058886, guid: b110c9c6ed102fa48beb3c7e6fec03ca,
     type: 3}
-  _poolSize: 5
 --- !u!114 &1667600971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,7 +705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefabEnemy: {fileID: -1905656752619187704, guid: c1006adc2b24caa44a4e6a7d16c3707d,
     type: 3}
-  _poolSize: 5
+  _playerTransform: {fileID: 4531892270109669}
 --- !u!4 &1667600972
 Transform:
   m_ObjectHideFlags: 0
@@ -652,7 +732,7 @@ GameObject:
   - component: {fileID: 1845623891}
   - component: {fileID: 1845623892}
   m_Layer: 0
-  m_Name: Spawn
+  m_Name: WaveSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -685,9 +765,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557775d58c3315c49a3cb97fc167c252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPool: {fileID: 1667600971}
-  _powerupPool: {fileID: 1667600970}
-  _gameSettings: {fileID: 11400000, guid: 37f6442b2652d324d8925356d13b92c7, type: 2}
 --- !u!1 &1833536176911849
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,7 +973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c822e3470858e4eb7a5d67b7f3f1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameSettings: {fileID: 11400000, guid: 37f6442b2652d324d8925356d13b92c7, type: 2}
 --- !u!114 &7075702237666463884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,7 +985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0ce3a81eb251b44b2dfbed013f4ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerSpeed: 2
 --- !u!114 &7075702237666463885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,8 +997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3d965f88aa3464d9aa591b81fc09e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _powerupIndicator: {fileID: 6297376995716744104}
-  _gameSettings: {fileID: 11400000, guid: 37f6442b2652d324d8925356d13b92c7, type: 2}
 --- !u!33 &7610044923976860071
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -959,3 +1032,4 @@ SceneRoots:
   - {fileID: 8472474078059344184}
   - {fileID: 1845623891}
   - {fileID: 1667600972}
+  - {fileID: 300535485}

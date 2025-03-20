@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace NewScript
 {
     public class PowerupPool : MonoBehaviour, IObjectPool<Powerup>
     {
-        [SerializeField] private Powerup _prefabPowerup;
-        [SerializeField] private int _poolSize = 5;
+        [SerializeField] private Powerup _prefabPowerup;        
+        [Inject] private GameSettings _settings;
 
         private Queue<Powerup> _powerupPool = new Queue<Powerup>();
 
@@ -17,7 +18,7 @@ namespace NewScript
 
         private void InitializePool()
         {
-            for (int i = 0; i < _poolSize; i++)
+            for (int i = 0; i < _settings.PowerupPoolSize; i++)
             {
                 ExpandPool();
             }
@@ -37,7 +38,6 @@ namespace NewScript
             {
                 ExpandPool();
             }
-
             Powerup powerup = _powerupPool.Dequeue();
             powerup.gameObject.SetActive(true);
             return powerup;

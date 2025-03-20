@@ -19,5 +19,9 @@ public class GameSettings : ScriptableObject
     [Space]
     [Header("Camera")]
     public float RotationSpeed = 50f;
+    [Space]
+    [Header("Object Pool")]
+    public int EnemyPoolSize = 5;
+    public int PowerupPoolSize = 5;
 
 }
