@@ -10,15 +10,20 @@ namespace NewScript
         [Inject] private GameSettings _settings;
         private bool _hasPowerup = false;
         private Vector3 _indicatorPosition = new Vector3(0, -0.7f, 0);
+        private Rigidbody _playerRb;
 
         private void Start()
         {
             Powerup.OnPowerup += OnPowerupIndicator;
+            _playerRb = GetComponent<Rigidbody>();
         }
 
         private void Update()
-        {            
-            _powerupIndicator.transform.position = transform.position + _indicatorPosition;
+        {
+            if (_playerRb.velocity.sqrMagnitude > 0.1f)
+            {
+                _powerupIndicator.transform.position = transform.position + _indicatorPosition;
+            }
         }
 
         private void OnPowerupIndicator()
