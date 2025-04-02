@@ -10,6 +10,10 @@ namespace NewScript
         [SerializeField] private PowerupPool _powerupPool;
         [SerializeField] private Transform _focalPoint;        
         [SerializeField] private GameObject _powerupIndicator;
+        [SerializeField] private ScoreCounter _scoreCounter;
+        [SerializeField] private GameTimer _gameTimer;        
+        [SerializeField] private WaveSpawner _waveSpawner;        
+        [SerializeField] private GameManager _gameManager;
 
         public override void InstallBindings()
         {
@@ -25,8 +29,16 @@ namespace NewScript
             // Привязка к точке
             Container.Bind<Transform>().FromInstance(_focalPoint).AsSingle();            
 
-            // Привязка к объекту
+            // Привязка к объекту индикатору
             Container.Bind<GameObject>().FromInstance(_powerupIndicator).AsSingle();
+
+            Container.Bind<ScoreCounter>().FromInstance(_scoreCounter).AsSingle();
+
+            Container.Bind<GameTimer>().FromInstance(_gameTimer).AsSingle();
+            
+            Container.Bind<WaveSpawner>().FromInstance(_waveSpawner).AsSingle();
+            
+            Container.Bind<GameManager>().FromInstance(_gameManager).AsSingle();
         }
     }
 }

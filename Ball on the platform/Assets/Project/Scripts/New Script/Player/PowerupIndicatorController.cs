@@ -18,7 +18,7 @@ namespace NewScript
             _playerRb = GetComponent<Rigidbody>();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (_playerRb.velocity.sqrMagnitude > 0.1f)
             {

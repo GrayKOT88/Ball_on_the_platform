@@ -8,6 +8,7 @@ namespace NewScript
         [Inject] private EnemyPool _enemyPool;
         [Inject] private PowerupPool _powerupPool;
         [Inject] private GameSettings _gameSettings;
+        [Inject] private GameManager _gameManager;
 
         private EnemySpawner _enemySpawner ;
         private PowerupSpawner _powerupSpawner;
@@ -18,21 +19,20 @@ namespace NewScript
         {           
             _enemySpawner = new EnemySpawner(_enemyPool, _gameSettings);
             _powerupSpawner = new PowerupSpawner(_powerupPool, _gameSettings);
-            Enemy.OnEnemyDestroyed += UpdateWave;
-            StartNextWave();            
+            Enemy.OnEnemyDestroyed += UpdateWave;            
         }
 
         private void UpdateWave()
         {
             _enemyCount--;            
-            if (_enemyCount == 0)
+            if (_enemyCount == 0 && _gameManager.IsGameActiv)
             {
                 _waveNumber++;
                 StartNextWave();
             }
         }
 
-        private void StartNextWave()
+        public void StartNextWave()
         {            
             _enemySpawner.SpawnEnemyWave(_waveNumber);
             _powerupSpawner.SpawnPowerup();            

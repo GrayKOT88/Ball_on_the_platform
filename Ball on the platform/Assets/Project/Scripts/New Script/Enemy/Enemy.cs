@@ -30,11 +30,11 @@ namespace NewScript
             {
                 Vector3 lookDirection = (_playerTransform.position - transform.position).normalized;
                 _enemyRb.AddForce(lookDirection * _settings.EnemySpeed);
-                if (transform.position.y < _settings.LowerBoundDestroy)
-                {
-                    _enemyPool.ReturnObject(this);
-                    OnEnemyDestroyed?.Invoke();                    
-                }
+            }
+            if (transform.position.y < _settings.LowerBoundDestroy)
+            {
+                _enemyPool.ReturnObject(this);
+                OnEnemyDestroyed?.Invoke();                    
             }
         }
     }
