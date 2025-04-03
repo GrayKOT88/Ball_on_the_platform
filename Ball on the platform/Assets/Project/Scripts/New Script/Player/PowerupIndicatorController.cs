@@ -6,10 +6,9 @@ namespace NewScript
 {
     public class PowerupIndicatorController : MonoBehaviour
     {
-        [Inject] private GameObject _powerupIndicator;
         [Inject] private GameSettings _settings;
-        private bool _hasPowerup = false;
-        private Vector3 _indicatorPosition = new Vector3(0, -0.7f, 0);
+        [SerializeField] private GameObject _powerupIndicator;
+        private bool _hasPowerup = false;        
         private Rigidbody _playerRb;
 
         private void Start()
@@ -22,7 +21,7 @@ namespace NewScript
         {
             if (_playerRb.velocity.sqrMagnitude > 0.1f)
             {
-                _powerupIndicator.transform.position = transform.position + _indicatorPosition;
+                _powerupIndicator.transform.position = transform.position + _settings.IndicatorPosition;
             }
         }
 
@@ -43,6 +42,11 @@ namespace NewScript
         public bool HasPowerup()
         {
             return _hasPowerup;
+        }
+
+        private void OnDestroy()
+        {
+            Powerup.OnPowerup -= OnPowerupIndicator;
         }
     }
 }

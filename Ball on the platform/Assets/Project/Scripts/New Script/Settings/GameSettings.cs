@@ -7,6 +7,7 @@ public class GameSettings : ScriptableObject
     public float PlayerSpeed = 2f;
     public float PowerupStrength = 15f;
     public float PowerupDuration = 7f;
+    public Vector3 IndicatorPosition = new Vector3(0, -0.7f, 0);
     [Space]
     [Header("Enemy")]
     public float EnemySpeed = 1f;
@@ -23,5 +24,4 @@ public class GameSettings : ScriptableObject
     [Header("Object Pool")]
     public int EnemyPoolSize = 5;
     public int PowerupPoolSize = 5;
-
 }

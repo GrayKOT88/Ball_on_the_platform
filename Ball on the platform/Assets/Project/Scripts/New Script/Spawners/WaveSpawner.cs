@@ -37,6 +37,11 @@ namespace NewScript
             _enemySpawner.SpawnEnemyWave(_waveNumber);
             _powerupSpawner.SpawnPowerup();            
             _enemyCount = _waveNumber;
-        }        
+        }
+
+        private void OnDestroy()
+        {
+            Enemy.OnEnemyDestroyed -= UpdateWave;
+        }
     }
 }

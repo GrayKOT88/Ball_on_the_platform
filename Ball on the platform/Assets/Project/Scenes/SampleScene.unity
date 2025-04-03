@@ -255,12 +255,11 @@ MonoBehaviour:
   _gameSettings: {fileID: 11400000, guid: 37f6442b2652d324d8925356d13b92c7, type: 2}
   _enemyPool: {fileID: 1667600971}
   _powerupPool: {fileID: 1667600970}
-  _focalPoint: {fileID: 1524169228}
-  _powerupIndicator: {fileID: 6297376995716744104}
-  _scoreCounter: {fileID: 1845623893}
-  _gameTimer: {fileID: 1845623894}
   _waveSpawner: {fileID: 1845623892}
   _gameManager: {fileID: 1845623895}
+  _scoreView: {fileID: 1845623897}
+  _timerView: {fileID: 1845623899}
+  _timerController: {fileID: 1845623898}
 --- !u!4 &300535485
 Transform:
   m_ObjectHideFlags: 0
@@ -1117,7 +1116,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 000
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1804,8 +1803,9 @@ GameObject:
   - component: {fileID: 1845623891}
   - component: {fileID: 1845623895}
   - component: {fileID: 1845623892}
-  - component: {fileID: 1845623893}
-  - component: {fileID: 1845623894}
+  - component: {fileID: 1845623897}
+  - component: {fileID: 1845623899}
+  - component: {fileID: 1845623898}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1840,34 +1840,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557775d58c3315c49a3cb97fc167c252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1845623893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845623888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e1f008f67491b946beb02e2b69f4450, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scoreText: {fileID: 1731250381}
-  _bestScoreText: {fileID: 1440863033}
---- !u!114 &1845623894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845623888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54910a7187305e64fbb10b92606d581a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timerText: {fileID: 1708797374}
-  _bestTimeText: {fileID: 1084692326}
 --- !u!114 &1845623895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1880,6 +1852,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26f6faa1eb1b84c47ae663c07c0dc667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1845623897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845623888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29742a249bccf974a8f752051b837ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentScoreText: {fileID: 1731250381}
+  _bestScoreText: {fileID: 1440863033}
+--- !u!114 &1845623898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845623888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe7e41b1f3b56f46b424c5e7f02c213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1845623899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845623888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e9a4cd1d75fa44a8890d0625aa5d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timerText: {fileID: 1708797374}
+  _bestTimeText: {fileID: 1084692326}
 --- !u!1 &1992929212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,6 +2180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0ce3a81eb251b44b2dfbed013f4ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _focalPoint: {fileID: 1524169228}
 --- !u!114 &7075702237666463885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2180,6 +2193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3d965f88aa3464d9aa591b81fc09e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _powerupIndicator: {fileID: 6297376995716744104}
 --- !u!33 &7610044923976860071
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -6,9 +6,9 @@ using System.Collections;
 namespace NewScript 
 {
     public class GameManager : MonoBehaviour
-    {
-        [Inject] private ScoreCounter _scoreCounter;
-        [Inject] private GameTimer _gameTimer;        
+    {        
+        [Inject] private ScoreController _scoreController;
+        [Inject] private TimerController _timerController;        
         [Inject] private WaveSpawner _waveSpawner;
         private float _restartDelay = 2f;
 
@@ -17,15 +17,15 @@ namespace NewScript
         public void StartGame()
         {
             IsGameActiv = true;
-            _gameTimer.StartTimer();
+            _timerController.StartTimer();
             _waveSpawner.StartNextWave();            
         }
 
         public void EndGame()
         {            
             IsGameActiv = false;
-            _gameTimer.StopTimer();
-            _scoreCounter.SaveBestScore();
+            _timerController.StopTimer();            
+            _scoreController.SaveBestScore();
             StartCoroutine(RestartGameAfterDelay()); 
         }
 
