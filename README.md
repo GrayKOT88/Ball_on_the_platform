@@ -6,12 +6,12 @@ A simple game was taken to which some patterns were applied to the code to visua
 Если кратко о том что применил в коде:
 ### 1.Dependency Injection (Zenject):
  - Использование DI для управления зависимостями.
-## 2.Паттерны проектирования:
+### 2.Паттерны проектирования:
  - Command Pattern
  - Object Pool
  - MVC для UI
  - Observer Pattern
-# 3.Чистота кода:
+### 3.Чистота кода:
  - Код структурирован, методы компактные и выполняют одну задачу.
  - Использование ScriptableObject (GameSettings) для настройки параметров игры.
  
