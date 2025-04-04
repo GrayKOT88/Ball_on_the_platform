@@ -13,8 +13,8 @@ namespace NewScript
 
         private void Start()
         {
-            Powerup.OnPowerup += OnPowerupIndicator;
-            _playerRb = GetComponent<Rigidbody>();
+            _playerRb = GetComponent<Rigidbody>();            
+            EventBus.Subscribe<PowerupCollectedEvent>(OnPowerupIndicator);
         }
 
         private void FixedUpdate()
@@ -25,7 +25,7 @@ namespace NewScript
             }
         }
 
-        private void OnPowerupIndicator()
+        private void OnPowerupIndicator(PowerupCollectedEvent evt)
         {
             _hasPowerup = true;
             _powerupIndicator.SetActive(true);                 
@@ -46,7 +46,7 @@ namespace NewScript
 
         private void OnDestroy()
         {
-            Powerup.OnPowerup -= OnPowerupIndicator;
+            EventBus.Unsubscribe<PowerupCollectedEvent>(OnPowerupIndicator);
         }
     }
 }

@@ -10,20 +10,20 @@ namespace NewScript
         [Inject] private ScoreController _scoreController;
         [Inject] private TimerController _timerController;        
         [Inject] private WaveSpawner _waveSpawner;
-        private float _restartDelay = 2f;
+        private float _restartDelay = 1f;
 
-        public bool IsGameActiv { get; private set; }
+        public bool IsGameActive { get; private set; }
 
         public void StartGame()
         {
-            IsGameActiv = true;
+            IsGameActive = true;
             _timerController.StartTimer();
             _waveSpawner.StartNextWave();            
         }
 
         public void EndGame()
         {            
-            IsGameActiv = false;
+            IsGameActive = false;
             _timerController.StopTimer();            
             _scoreController.SaveBestScore();
             StartCoroutine(RestartGameAfterDelay()); 
@@ -32,6 +32,7 @@ namespace NewScript
         private IEnumerator RestartGameAfterDelay()
         {
             yield return new WaitForSeconds(_restartDelay);
+            EventBus.ClearAllSubscriptions(); // Очищаем перед загрузкой
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

@@ -16,7 +16,7 @@ namespace NewScript
             LoadBestScore();
         }
 
-        public void IncrementScore()
+        public void IncrementScore(EnemyDestroyedEvent evt)
         {
             CurrentScore++;
             OnScoreUpdated?.Invoke(CurrentScore);

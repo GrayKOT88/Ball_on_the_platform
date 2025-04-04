@@ -17,7 +17,7 @@ namespace NewScript
 
         private void FixedUpdate()
         {
-            if (_gameManager.IsGameActiv)
+            if (_gameManager.IsGameActive)
             {
                 float forwardInput = Input.GetAxis("Vertical");
                 _playerRb.AddForce(_focalPoint.transform.forward * _settings.PlayerSpeed * forwardInput);

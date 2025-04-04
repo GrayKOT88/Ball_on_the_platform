@@ -10,7 +10,7 @@ namespace NewScript
 
         private void Update()
         {
-            if (_gameManager.IsGameActiv)
+            if (_gameManager.IsGameActive)
             {
                 float horizontalInput = Input.GetAxis("Horizontal");
                 transform.Rotate(Vector3.up, -horizontalInput * _settings.RotationSpeed * Time.deltaTime);

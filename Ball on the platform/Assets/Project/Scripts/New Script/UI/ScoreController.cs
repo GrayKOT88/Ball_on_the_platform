@@ -15,7 +15,7 @@ namespace NewScript
 
             // Подписка на события
             _model.OnScoreUpdated += _view.UpdateCurrentScore;           
-            Enemy.OnEnemyDestroyed += _model.IncrementScore;
+            EventBus.Subscribe<EnemyDestroyedEvent>(_model.IncrementScore);
         }
 
         public void SaveBestScore() => _model.SaveBestScore();

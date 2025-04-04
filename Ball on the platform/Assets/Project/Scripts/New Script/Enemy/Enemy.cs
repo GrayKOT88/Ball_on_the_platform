@@ -8,9 +8,7 @@ namespace NewScript
         private IObjectPool<Enemy> _enemyPool;
         private Transform _playerTransform;
         private GameSettings _settings;
-        private Rigidbody _enemyRb;
-
-        public static event Action OnEnemyDestroyed;
+        private Rigidbody _enemyRb;     
 
         private void Start()
         {
@@ -34,7 +32,7 @@ namespace NewScript
             if (transform.position.y < _settings.LowerBoundDestroy)
             {
                 _enemyPool.ReturnObject(this);
-                OnEnemyDestroyed?.Invoke();                    
+                EventBus.Publish(new EnemyDestroyedEvent());  // Публикуем через Event Bus                                   
             }
         }
     }

@@ -18,14 +18,14 @@ namespace NewScript
         private void Start()
         {           
             _enemySpawner = new EnemySpawner(_enemyPool, _gameSettings);
-            _powerupSpawner = new PowerupSpawner(_powerupPool, _gameSettings);
-            Enemy.OnEnemyDestroyed += UpdateWave;            
+            _powerupSpawner = new PowerupSpawner(_powerupPool, _gameSettings);            
+            EventBus.Subscribe<EnemyDestroyedEvent>(UpdateWave); // Подписываемся через Event Bus
         }
 
-        private void UpdateWave()
+        private void UpdateWave(EnemyDestroyedEvent evt)
         {
             _enemyCount--;            
-            if (_enemyCount == 0 && _gameManager.IsGameActiv)
+            if (_enemyCount == 0 && _gameManager.IsGameActive)
             {
                 _waveNumber++;
                 StartNextWave();
@@ -40,8 +40,8 @@ namespace NewScript
         }
 
         private void OnDestroy()
-        {
-            Enemy.OnEnemyDestroyed -= UpdateWave;
+        {            
+            EventBus.Unsubscribe<EnemyDestroyedEvent>(UpdateWave); // Отписываемся через Event Bus
         }
     }
 }
