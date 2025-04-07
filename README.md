@@ -4,15 +4,14 @@ A simple game was taken to which some patterns were applied to the code to visua
 Для практики взял примитивную игру. В папке 'Old Scripts' находится изначальный код, а в 'New Scripts' изменённый код.
 
 Если кратко о том что применил в коде:
-### 1.Dependency Injection (Zenject):
- - Использование DI для управления зависимостями.
+### 1.Инъекция зависимостей (DI):
+ - Использование Zenject для инъекции зависимостей.
 ### 2.Паттерны проектирования:
- - Command Pattern
- - Object Pool
- - MVC для UI
- - Observer Pattern
- - Event Bus
+Command Pattern; Object Pool; MVC для UI; Observer Pattern; Event Bus.
 ### 3.Чистота кода:
  - Код структурирован, методы компактные и выполняют одну задачу.
  - Использование ScriptableObject (GameSettings) для настройки параметров игры.
+### 4.Дополнительные улучшения:
+ - Анимация кнопки (StartButton) с помощью DOTween
+ - Очистка подписок (EventBus.ClearAllSubscriptions()) при перезагрузке сцены
  
