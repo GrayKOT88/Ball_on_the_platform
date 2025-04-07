@@ -11,6 +11,7 @@ A simple game was taken to which some patterns were applied to the code to visua
  - Object Pool
  - MVC для UI
  - Observer Pattern
+ - Event Bus
 ### 3.Чистота кода:
  - Код структурирован, методы компактные и выполняют одну задачу.
  - Использование ScriptableObject (GameSettings) для настройки параметров игры.
