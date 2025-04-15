@@ -1,19 +1,21 @@
 using System.Collections;
 using UnityEngine;
-using Zenject;
 
 namespace NewScript
 {
     public class PowerupIndicatorController : MonoBehaviour
     {
-        [Inject] private GameSettings _settings;
-        [SerializeField] private GameObject _powerupIndicator;
-        private bool _hasPowerup = false;        
+        private GameSettings _settings;
+        private GameObject _powerupIndicator;
         private Rigidbody _playerRb;
+        private bool _hasPowerup = false;        
 
-        private void Start()
+        public void Initialize(GameSettings settings, GameObject powerupIndicator, Rigidbody playerRb)
         {
-            _playerRb = GetComponent<Rigidbody>();            
+            _settings = settings;
+            _powerupIndicator = powerupIndicator;
+            _playerRb = playerRb;
+
             EventBus.Subscribe<PowerupCollectedEvent>(OnPowerupIndicator);
         }
 

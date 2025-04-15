@@ -1,16 +1,16 @@
 using UnityEngine;
-using Zenject;
 
 namespace NewScript
 {
     public class PlayerCollision : MonoBehaviour
     {
-        [Inject] private GameSettings _settings;
-        private PowerupIndicatorController _powerupController;        
+        private GameSettings _settings;
+        private PowerupIndicatorController _powerupController;
 
-        private void Start()
+        public void Initialize(GameSettings settings, PowerupIndicatorController powerupIndicatorController)
         {
-            _powerupController = GetComponent<PowerupIndicatorController>();
+            _settings = settings;
+            _powerupController = powerupIndicatorController;
         }
 
         private void OnCollisionEnter(Collision collision)

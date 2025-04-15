@@ -6,7 +6,7 @@ public class GameSettings : ScriptableObject
     [Header("Player")]
     public float PlayerSpeed = 2f;
     public float PowerupStrength = 15f;
-    public float PowerupDuration = 7f;
+    public float PowerupDuration = 10f;
     public Vector3 IndicatorPosition = new Vector3(0, -0.7f, 0);
     [Space]
     [Header("Enemy")]

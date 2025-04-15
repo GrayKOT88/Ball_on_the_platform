@@ -1,20 +1,22 @@
 ﻿using UnityEngine;
-using Zenject;
 
 namespace NewScript
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [Inject] private GameSettings _settings;
-        [Inject] private GameManager _gameManager;
-        [SerializeField] private Transform _focalPoint;
+        private GameSettings _settings;
+        private GameManager _gameManager;
+        private Transform _focalPoint;
         private Rigidbody _playerRb;
 
-        private void Start()
+        public void Initialize(GameSettings settings, GameManager gameManager, Transform focalPoint, Rigidbody playerRb)
         {
-            _playerRb = GetComponent<Rigidbody>();            
+            _settings = settings;
+            _gameManager = gameManager;
+            _focalPoint = focalPoint;
+            _playerRb = playerRb;
         }
-
+        
         private void FixedUpdate()
         {
             if (_gameManager.IsGameActive)
