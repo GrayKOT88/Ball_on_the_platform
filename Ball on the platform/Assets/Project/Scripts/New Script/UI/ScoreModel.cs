@@ -5,14 +5,16 @@ namespace NewScript
 {
     public class ScoreModel
     {
+        private ILeaderboardService _leaderboardService;
         private const string BestScoreKey = "BestScore";
         private int CurrentScore;
         public int BestScore { get; private set; }
 
         public event Action<int> OnScoreUpdated;        
 
-        public ScoreModel()
+        public ScoreModel(ILeaderboardService leaderboardService = null)
         {
+            _leaderboardService = leaderboardService ?? new YGLeaderboardAdapter();
             LoadBestScore();
         }
 
@@ -27,7 +29,8 @@ namespace NewScript
             if (CurrentScore > BestScore)
             {
                 BestScore = CurrentScore;
-                PlayerPrefs.SetInt(BestScoreKey, BestScore);                
+                PlayerPrefs.SetInt(BestScoreKey, BestScore);
+                _leaderboardService.SubmitScore(BestScore); // Отправляем на лидерборд
             }
         }
 

@@ -5,11 +5,17 @@ namespace NewScript
 {    
     public class TimerModel
     {
-        private bool IsTimerRunning;
+        private ILeaderboardService _leaderboardService;
         private const string BestTimeKey = "BestTime";
+        private bool IsTimerRunning;
         public float CurrentTime { get; private set; } = 0f;
 
         public event Action OnTimeUpdated;
+
+        public TimerModel(ILeaderboardService leaderboardService = null)
+        {
+            _leaderboardService = leaderboardService ?? new YGLeaderboardAdapter();
+        }
 
         public void StartTimer()
         {
@@ -37,6 +43,9 @@ namespace NewScript
             if (CurrentTime > bestTime)
             {
                 PlayerPrefs.SetFloat(BestTimeKey, CurrentTime);
+                
+                int timeInSeconds = Mathf.FloorToInt(CurrentTime); //Отправляем время на лидерборд (в секундах)
+                _leaderboardService.SubmitTime(timeInSeconds);
             }
         }
 

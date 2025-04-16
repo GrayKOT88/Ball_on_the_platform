@@ -39,6 +39,9 @@ namespace NewScript
             Container.Bind<TimerModel>().AsSingle();
             Container.Bind<TimerView>().FromInstance(_timerView).AsSingle();
             Container.Bind<TimerController>().FromInstance(_timerController).AsSingle();
+
+            // Лидерборд
+            Container.Bind<ILeaderboardService>().To<YGLeaderboardAdapter>().AsSingle();
         }
     }
 }
