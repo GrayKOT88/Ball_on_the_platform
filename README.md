@@ -9,7 +9,8 @@ A simple game was taken to which some patterns were applied to the code to visua
  - Использование ScriptableObject (GameSettings) для настройки параметров игры.
  - Использование Zenject для инъекции зависимостей.
  - Использование паттернов: Command Pattern; Object Pool; MVC для UI; Observer Pattern; Event Bus.
- - Анимация кнопки (StartButton) с помощью DOTween
- - Очистка подписок (EventBus.ClearAllSubscriptions()) при перезагрузке сцены
+ - Анимация кнопки (StartButton) с помощью DOTween.
+ - Очистка подписок (EventBus.ClearAllSubscriptions()) при перезагрузке сцены.
+ - Добовление плагина PluginYG, и реализация «Лидерборда».
 ### Итоговая оценка: 8.5/10 (оценка дана нейросетью через которую пропустил весь этот код)
 Это отличный код для небольшой игры, демонстрирующий хорошие практики Unity-разработки. Он чистый, расширяемый и оптимизированный. Небольшие улучшения могут сделать его ещё лучше, но текущая реализация уже очень сильная.
