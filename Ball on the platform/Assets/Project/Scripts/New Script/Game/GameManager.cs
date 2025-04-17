@@ -10,7 +10,7 @@ namespace NewScript
         [Inject] private ScoreController _scoreController;
         [Inject] private TimerController _timerController;        
         [Inject] private WaveSpawner _waveSpawner;
-        private float _restartDelay = 1f;
+        private float _restartDelay = 0.1f;
 
         public bool IsGameActive { get; private set; }
 
@@ -32,7 +32,7 @@ namespace NewScript
         private IEnumerator RestartGameAfterDelay()
         {
             yield return new WaitForSeconds(_restartDelay);
-            EventBus.ClearAllSubscriptions(); // Очищаем перед загрузкой
+            EventBus.ClearAllSubscriptions(); // Очищаем все подписки перед загрузкой
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
