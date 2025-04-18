@@ -25,7 +25,8 @@ namespace NewScript
                 _playerRb.AddForce(_focalPoint.transform.forward * _settings.PlayerSpeed * forwardInput);
                 if (transform.position.y < _settings.LowerBoundDestroy)
                 {
-                    _gameManager.EndGame();                    
+                    _gameManager.EndGame();
+                    Destroy(gameObject);
                 }
             }
         }

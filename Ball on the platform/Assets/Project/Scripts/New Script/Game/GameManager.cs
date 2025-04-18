@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
-using System.Collections;
 
 namespace NewScript 
 {
@@ -10,9 +9,15 @@ namespace NewScript
         [Inject] private ScoreController _scoreController;
         [Inject] private TimerController _timerController;        
         [Inject] private WaveSpawner _waveSpawner;
-        private float _restartDelay = 0.1f;
+        [SerializeField] private GameObject _startBackground;
+        [SerializeField] private GameObject _restartBackground;
 
         public bool IsGameActive { get; private set; }
+
+        private void Start()
+        {
+            _startBackground.SetActive(true);
+        }
 
         public void StartGame()
         {
@@ -26,12 +31,11 @@ namespace NewScript
             IsGameActive = false;
             _timerController.StopTimer();            
             _scoreController.SaveBestScore();
-            StartCoroutine(RestartGameAfterDelay()); 
+            _restartBackground.SetActive(true);
         }
 
-        private IEnumerator RestartGameAfterDelay()
-        {
-            yield return new WaitForSeconds(_restartDelay);
+        public void RestartGame()
+        {            
             EventBus.ClearAllSubscriptions(); // Очищаем все подписки перед загрузкой
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
