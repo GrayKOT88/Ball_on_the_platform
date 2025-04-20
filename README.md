@@ -1,7 +1,7 @@
 # Ball_on_the_platform
 A simple game was taken to which some patterns were applied to the code to visually show the code before and after the changes.
 # Реализация архитектуры и паттернов на практике. C#. Unity.
-Для практики взял примитивную игру. В папке 'Old Scripts' находится изначальный код, а в 'New Scripts' изменённый код.
+Для практики взял примитивную игру. В папке 'Old Scripts' находится изначальный код, а в 'New Scripts' изменённый код. Выложил наглядный пример на «Яндекс Играх», ссылка: https://yandex.ru/games/app/430327?lang=ru
 
 Если кратко о том что применил в коде:
  - Код структурирован, методы компактные.
